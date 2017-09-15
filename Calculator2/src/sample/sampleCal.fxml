@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="center" hgap="10" prefWidth="300.0" style="-fx-background-color: #ffffff;" vgap="10" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerCal">
+   <VBox prefHeight="500.0" prefWidth="300.0">
+      <children>
+         <TextField fx:id="textField" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="300.0" text="0">
+            <font>
+               <Font name="System Bold" size="36.0" />
+            </font></TextField>
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Button fx:id="buttonSeven" prefHeight="100.0" prefWidth="75.0" text="7">
+                  <font>
+                     <Font size="36.0" />
+                  </font></Button>
+                <Button fx:id="buttonEight" prefHeight="100.0" prefWidth="75.0" text="8">
+                  <font>
+                     <Font size="36.0" />
+                  </font></Button>
+                <Button fx:id="buttonNine" prefHeight="100.0" prefWidth="75.0" text="9">
+                  <font>
+                     <Font size="36.0" />
+                  </font></Button>
+                <Button fx:id="buttonPlus" prefHeight="100.0" prefWidth="75.0" text="+">
+                  <font>
+                     <Font size="36.0" />
+                  </font></Button>
+            </children>
+         </HBox>
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+               <Button fx:id="buttonFour" prefHeight="100.0" prefWidth="75.0" text="4">
+                   <font>
+                       <Font size="36.0" />
+                   </font></Button>
+                <Button fx:id="buttonFive" prefHeight="100.0" prefWidth="75.0" text="5">
+                    <font>
+                        <Font size="36.0" />
+                    </font></Button>
+                <Button fx:id="buttonSix" prefHeight="100.0" prefWidth="75.0" text="6">
+                    <font>
+                        <Font size="36.0" />
+                    </font></Button>
+                <Button fx:id="buttonMinus" prefHeight="100.0" prefWidth="75.0" text="-">
+                    <font>
+                        <Font size="36.0" />
+                    </font></Button>
+            </children></HBox>
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Button fx:id="buttonOne" prefHeight="100.0" prefWidth="75.0" text="1">
+                    <font>
+                        <Font size="36.0" />
+                    </font></Button>
+                <Button fx:id="buttonTwo" prefHeight="100.0" prefWidth="75.0" text="2">
+                    <font>
+                        <Font size="36.0" />
+                    </font></Button>
+                <Button fx:id="buttonThree" prefHeight="100.0" prefWidth="75.0" text="3">
+                    <font>
+                        <Font size="36.0" />
+                    </font></Button>
+                <Button fx:id="buttonMultiply" prefHeight="100.0" prefWidth="75.0" text="*">
+                    <font>
+                        <Font size="36.0" />
+                    </font></Button>
+            </children>
+         </HBox>
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Button fx:id="buttonClear" prefHeight="100.0" prefWidth="75.0" text="CE">
+                    <font>
+                        <Font size="28.0" />
+                    </font></Button>
+                <Button fx:id="buttonZero" prefHeight="100.0" prefWidth="75.0" text="0">
+                    <font>
+                        <Font size="36.0" />
+                    </font></Button>
+                <Button fx:id="buttonEquals" prefHeight="100.0" prefWidth="75.0" text="=">
+                    <font>
+                        <Font size="36.0" />
+                    </font></Button>
+                <Button fx:id="buttonDivide" prefHeight="100.0" prefWidth="75.0" text="/">
+                    <font>
+                        <Font size="36.0" />
+                    </font></Button>
+            </children>
+         </HBox>
+            
+      </children>
+   </VBox>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>
