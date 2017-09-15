@@ -134,6 +134,7 @@ public class ControllerCal {
         try {
             System.out.println("try");
             result = engine.eval(calcVal);
+            calcVal = String.valueOf(result);
             System.out.println(calcVal + "=" + result);
             textField.setText(String.valueOf(result));
         }
