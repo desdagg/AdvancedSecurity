@@ -1,22 +1,15 @@
 package sample;
 
-import com.sun.xml.internal.ws.api.server.EndpointReferenceExtensionContributor;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import java.awt.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptEngine;
-import java.lang.Throwable;
-import javax.script.ScriptException;
-
 
 
 public class ControllerCal {
-
+    //declare the buttons
     @FXML
     private Button buttonZero;
     @FXML
@@ -56,32 +49,35 @@ public class ControllerCal {
 
     public String calcVal = "0";
 
+    //Method called when MainCal is run
+    //each buttons action event calls buttonHandling and passes a specific int
     public void initialize(){
         textField.setText(calcVal);
 
-        buttonZero.setOnAction(event -> buttonHandeling(10));
-        buttonOne.setOnAction(event -> buttonHandeling(1));
-        buttonTwo.setOnAction(event -> buttonHandeling(2));
-        buttonThree.setOnAction(event -> buttonHandeling(3));
-        buttonFour.setOnAction(event -> buttonHandeling(4));
-        buttonFive.setOnAction(event -> buttonHandeling(5));
-        buttonSix.setOnAction(event -> buttonHandeling(6));
-        buttonSeven.setOnAction(event -> buttonHandeling(7));
-        buttonEight.setOnAction(event -> buttonHandeling(8));
-        buttonNine.setOnAction(event -> buttonHandeling(9));
+        buttonZero.setOnAction(event -> buttonHandling(10));
+        buttonOne.setOnAction(event -> buttonHandling(1));
+        buttonTwo.setOnAction(event -> buttonHandling(2));
+        buttonThree.setOnAction(event -> buttonHandling(3));
+        buttonFour.setOnAction(event -> buttonHandling(4));
+        buttonFive.setOnAction(event -> buttonHandling(5));
+        buttonSix.setOnAction(event -> buttonHandling(6));
+        buttonSeven.setOnAction(event -> buttonHandling(7));
+        buttonEight.setOnAction(event -> buttonHandling(8));
+        buttonNine.setOnAction(event -> buttonHandling(9));
 
-        buttonPlus.setOnAction(event -> buttonHandeling(11));
-        buttonMinus.setOnAction(event -> buttonHandeling(12));
-        buttonMultiply.setOnAction(event -> buttonHandeling(13));
-        buttonDivide.setOnAction(event -> buttonHandeling(14));
+        buttonPlus.setOnAction(event -> buttonHandling(11));
+        buttonMinus.setOnAction(event -> buttonHandling(12));
+        buttonMultiply.setOnAction(event -> buttonHandling(13));
+        buttonDivide.setOnAction(event -> buttonHandling(14));
 
 
         buttonClear.setOnAction(event -> clearScreen());
 
         buttonEquals.setOnAction(event -> getResult());
     }
-
-    public void buttonHandeling(int i){
+    //Method to handle the button inputs.
+    //each button action passes in an int
+    public void buttonHandling(int i){
         String newVal = "";
         if (i == 1)
             newVal = "1";
@@ -112,15 +108,16 @@ public class ControllerCal {
         else if (i == 14)//Divide
             newVal = "/";
 
-
+        //check if prior input and add to the end
+        //if none replace "0" with input
         if (calcVal == "0")
             calcVal = newVal;
         else
             calcVal = calcVal.concat(newVal);
-
+        //set the textfield to the inputted value
         textField.setText(calcVal);
     }
-
+    //set the value on the screen to "0"
     public void clearScreen(){
         calcVal = "0";
         textField.setText("0");
@@ -128,21 +125,22 @@ public class ControllerCal {
 
     public void getResult(){
         Object result;
-        System.out.println("getResult");
+        //declare a script engine manager for evaluating the inputted expression
         ScriptEngineManager mgr = new ScriptEngineManager();
+        //declare a JavaScript engine
         ScriptEngine engine = mgr.getEngineByName("JavaScript");
         try {
-            System.out.println("try");
+            //evaluate the inputted calculator expression using the JavaScript engine
             result = engine.eval(calcVal);
+            //convert result to a string
             calcVal = String.valueOf(result);
-            System.out.println(calcVal + "=" + result);
+            //set the textFiled to the result
             textField.setText(String.valueOf(result));
         }
         catch (Exception e){
-            System.out.println("Error ");
+            //return error if script could not be evaluated
             textField.setText("Syntax Error");
-            }
-        //System.out.println(calcVal + "=" + result);
+        }
     }
 
 }

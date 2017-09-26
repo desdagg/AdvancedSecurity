@@ -10,8 +10,10 @@ public class MainCal extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        //load the FXML file
         Parent root = FXMLLoader.load(getClass().getResource("sampleCal.fxml"));
         primaryStage.setTitle("Calculator");
+        //Declare the size
         primaryStage.setScene(new Scene(root, 300, 500));
         primaryStage.show();
     }
