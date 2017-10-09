@@ -9,6 +9,9 @@ public class Factory {
         if(cipherType.equalsIgnoreCase("Caesar"))
             return new Caesar();
 
+        if(cipherType.equalsIgnoreCase("vigenere"))
+            return new Vigenere();
+
         return null;
     }
 }

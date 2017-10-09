@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class Caesar implements Cipher {
+public class Vigenere implements Cipher {
 
     private static HashMap<Character, Integer> alphaToIndex = new HashMap<>();
 
@@ -15,31 +15,38 @@ public class Caesar implements Cipher {
     }
 
     @Override
-    public String decrypt(String message, Object key){
+    public String decrypt(String message, Object keyObj){
 
         init();
-        int shift = (int) key;
         message = message.toLowerCase();
+        //multiply positions and mod to 26 for decrypted letter
+        //loop the key, using mod, wile looping the message.
+        //multiply key pos and message pos, then mod, get position of result
 
-        int len = message.length();
+        String key = keyObj.toString().toLowerCase();
 
         String output = "";
 
-        for (int i = 0; i < len; i++)
-        {
+        int keyPos = 0;
+        for (int i = 0; i < message.length(); i++){
+
             char c = (message.charAt(i));
             try {
-                int pos = alphaToIndex.get(c);
-                pos = ((pos - shift)+26) % 26;
-                c = alphabet[pos];
+                char keyC = (key.charAt(keyPos % key.length()));
+
+                int posA = alphaToIndex.get(c);
+                int posKey = alphaToIndex.get(keyC);
+
+                int newPos = (posA - posKey + 26) % 26;
+
+                c = alphabet[newPos];
+                keyPos++;
             }
-            catch(NullPointerException e)
-            {
+            catch(NullPointerException e){
                 c = c;
             }
             output += c;
         }
-
 
 
         return output;
@@ -47,30 +54,18 @@ public class Caesar implements Cipher {
 
     @Override
     public void encrypt(){
+    }
 
+    public String bruteForce(String message){
+
+        return "not a chance";
     }
 
     void init(){
-        /*for (int i = 0; i < alphabet.length; i++){
-            alphaToIndex.put(alphabet[i], i);
-        }*/
         int i = 0;
         for (char ch = 'a'; ch <= 'z'; ++ch) {
             alphaToIndex.put(ch, i);
             i++;
         }
-    }
-
-    public String bruteForce(String message){
-
-        String output = "";
-
-        for (int i =0; i < alphabet.length; i++){
-            Object key = (int) i;
-            String decrypted = decrypt(message, key);
-            output += "\n\n key: " + i + " : " + decrypted;
-        }
-
-        return output;
     }
 }
